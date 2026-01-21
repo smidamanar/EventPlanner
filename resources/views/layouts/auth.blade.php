@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@yield('title') - Event Planner</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    @vite(['resources/css/app.css']) <!-- optional -->
+
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html, body { height:100%; overflow:hidden; font-family:'Inter', system-ui,-apple-system,sans-serif; }
+
+        body { background:#0a0a14; color:#fff; }
+
+        .split {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .left {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:30px 40px;
+        }
+
+        .left h1 {
+            font-size: 38px;
+            font-weight:700;
+            line-height:1.08;
+            margin-bottom:1.8rem;
+        }
+
+        .left p {
+            font-size:0.8rem;
+            max-width:440px;
+            opacity:0.92;
+            line-height:1.45;
+            margin-bottom:2.2rem;
+        }
+
+        .btn-switch {
+            background: rgba(108, 117, 125, 0.5);
+            backdrop-filter: blur(6px);
+            color: white;
+            border: none;
+            padding: 12px 44px;
+            border-radius: 7px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s;
+            
+        }
+
+        .btn-switch:hover {
+            background:rgba(120, 72, 244,1);
+            transform:translateY(-2px);
+        }
+
+        .right {
+            background:#F8F8FA;
+            color:#111;
+            padding:30px 50px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2px;
+        }
+        .logo span { color:#7848F4; }
+
+        .title {
+            font-size:28px;
+            font-weight:700;
+            text-align:center;
+            margin: 0.4rem 0 2.2rem;
+        }
+
+        .form-group { margin-bottom:1.4rem; }
+
+        .form-group label {
+display: block;
+            font-size: 16px;
+            font-weight: 400;
+            color: #000000;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input {
+width: 100%;
+            height: 46px;
+            padding: 0 16px;
+            border: 0px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.98rem;
+            background: #ffffff;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #7848F4;
+            box-shadow: 0 0 0 3px rgba(120,72,244,0.12);
+        }
+
+        .btn-primary {
+            width:100%;
+            height:50px;
+            background:#7848F4;
+            color:white;
+            border:none;
+            border-radius:7px;
+            font-size:1.05rem;
+            font-weight:600;
+            cursor:pointer;
+            transition:background 0.25s;
+            margin-top:0.8rem;
+        }
+
+        .btn-primary:hover { background:#6636d6; }
+
+        .forgot {
+            text-align:right;
+            font-size:0.9rem;
+            margin:-0.6rem 0 1.4rem;
+        }
+        .forgot a { color:#6c757d; text-decoration:none; }
+
+        .error-message {
+    color: #e74c3c;
+    font-size: 0.82rem;
+    margin-top: 0.35rem;
+    display: block;
+}
+
+.remember-me label {
+    color: #555;
+    cursor: pointer;
+    user-select: none;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: #7848F4;
+}
+
+        @media (max-width:1024px) {
+            .split { grid-template-columns:1fr; grid-template-rows:38vh 62vh; }
+            .left { padding:25px 30px; background-attachment:scroll; }
+            .right { padding:35px 40px; }
+        }
+
+        @media (max-width:600px) {
+            .left h1 { font-size:2.3rem; }
+            .title { font-size:1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="split">
+
+    <div class="left" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,60,120,0.4)), url('@yield('left-bg-image', 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80')');">
+        @yield('left-content')
+    </div>
+
+    <div class="right">
+        @yield('form-content')
+    </div>
+
+</div>
+
+</body>
+</html>

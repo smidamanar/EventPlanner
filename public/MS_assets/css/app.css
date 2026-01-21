@@ -1,0 +1,817 @@
+/* resources/css/app.css */
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #F8F8FA;
+    color: #111;
+    line-height: 1.5;           /* matched reference */
+}
+
+/* Container */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;            /* bigger side padding like reference */
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-top: 30px;           /* extra top space from reference */
+}
+
+.logo {
+    font-size: 36px;            /* 2.25rem ≈ 36px */
+    font-weight: 700;
+}
+
+.logo span {
+    color: #7848F4;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-links a.btn-signup {
+    background: #7848F4;
+    color: white !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    height: 49px;
+    width: 133px;
+    cursor: pointer;
+}
+/* Hero */
+.hero {
+    position: relative;
+    width: 100%;
+    max-width: 1210px;
+    height: 596px;
+    margin: 10px auto 80px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=2070') center/cover no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 270px;
+}
+
+.hero-arrows {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+.hero-arrow {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+/* Back button (kept from your original) */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: #7848F4;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 25px 0 40px;
+}
+
+/* Events section */
+.events-section {
+    margin: 60px 0;
+}
+
+.events-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.events-title span {
+    color: #7848F4;
+}
+
+.events-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.search-bar {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    background: #F0F1F4;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.filter-select {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #F0F1F4;
+    margin-right: 10px;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 0 auto;
+}
+
+.event-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+    padding: 10px;
+}
+
+.event-image {
+    width: calc(100% - 15px);
+    margin: 0 auto;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.event-content {
+    padding: 10px;
+}
+
+.event-badge {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    background: white;
+    color: #7848F4;
+    font-size: 0.55rem;
+    padding: 4px 8px;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.event-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.event-date {
+    font-size: 12px;
+    color: #7848F4;
+    margin-bottom: 10px;
+}
+
+.event-type {
+    font-size: 12px;
+    color: #666;
+}
+
+.load-more {
+    display: block;
+    margin: 40px auto 0;
+    background: #7848F4;
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background: #10107B;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.footer-logo span {
+    color: #7848F4;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.subscribe-input {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.subscribe-btn {
+    background: #7848F4;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-links {
+    margin-bottom: 32px;
+}
+
+.footer-links a {
+    color: #D1D5DB;
+    text-decoration: none;
+    margin: 0 16px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.copyright {
+    font-size: 0.875rem;
+    color: #ffffff;
+    border-top: 1.5px solid #ffffff;
+    padding-top: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* Event Show Page - Specific Hero (to avoid conflict with other hero) */
+.event-hero-section {
+
+    
+
+        position: relative;
+    width: 100%;
+    max-width: 1210px;
+    height: 596px;
+    margin: 10px auto 80px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.event-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.event-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.48);   /* slightly stronger than 0.4 for better contrast on busy images */
+    z-index: 1;
+}
+
+.event-hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem 3.5rem 4rem;
+    color: white;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/* Back button - top left */
+.event-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #7848F4;
+    color: white;
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.25s ease;
+}
+
+.event-back-btn:hover {
+    background: #6636d6;
+}
+
+/* Main content - bottom aligned */
+.event-title-hero {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 0.85rem;
+    text-shadow: 0 4px 16px rgba(0,0,0,0.7);
+}
+
+.event-place-hero {
+    font-size: clamp(1.1rem, 4vw, 2rem);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+}
+
+.event-teaser-hero {
+    font-size: 1.25rem;
+    max-width: 50rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    opacity: 0.92;
+}
+
+/* Book button */
+.event-btn-book {
+    display: inline-block;
+    background: #7848F4;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 1.2rem 3.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(120, 72, 244, 0.35);
+}
+
+.event-btn-book:hover {
+    background: #5e35cc;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(120, 72, 244, 0.45);
+}
+
+.event-btn-booked {
+    display: inline-block;
+    background: #6b7280;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 1.2rem 3.5rem;
+    border-radius:10px;
+}
+
+/* No image fallback - gradient in your brand purple tones */
+.event-no-image {
+    background: linear-gradient(135deg, #4c1d95 0%, #7848F4 50%, #a78bfa 100%);
+    display: flex;
+    align-items: center;
+    justify-content :center;
+    font-size: 4rem;
+    color: rgba(255,255,255,0.35);
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+/* Below hero - info section (two columns) */
+.event-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1200px;
+    margin: 0 auto 6rem;
+    padding: 0 3.5rem;
+}
+
+.event-section-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #111;
+}
+
+.event-capacity-highlight {
+    color: #7848F4;
+    font-weight: 700;
+}
+
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .event-hero-content { padding: 1.8rem 2.5rem 3.5rem; }
+    .event-info-grid { grid-template-columns: 1fr; gap: 4rem; }
+}
+
+@media (max-width: 768px) {
+    .event-hero-section { min-height: 65vh; }
+    .event-title-hero { font-size: clamp(2.5rem, 8vw, 4rem); }
+    .event-place-hero { font-size: clamp(1.6rem, 5vw, 2.5rem); }
+    .event-teaser-hero { font-size: 1.1rem; }
+    .event-btn-book { padding: 1rem 2.8rem; font-size: 1.15rem; }
+}
+
+/* Removed unused classes from your original (hero, info-grid, other-events, etc.) 
+   → add them back only if you actually use those sections */
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .content-container {
+        padding: 0 40px;
+    }
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+    .events-filters {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .search-bar {
+        margin-right: 0;
+    }
+    .filter-select {
+        margin-right: 0;
+        width: 100%;
+    }
+}
+/* Booking Popup - Refined to match reference design */
+.booking-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65); /* stronger overlay like hero */
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+}
+
+.booking-popup.active {
+    display: flex;
+}
+
+.popup-content {
+    background: #F8F8FA;
+    border-radius: 16px;               /* softer rounded like modern modals */
+    padding: 2.5rem 2.5rem 2rem;
+    width: 100%;
+    max-width: 420px;                  /* compact & focused */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+}
+
+.popup-content h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 1.8rem;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 2px solid #7848F4;        /* purple border */
+    color: #7848F4;
+    padding: 0.85rem 2.2rem;
+    border-radius: 10px;               /* pill shape like Book now */
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+    background: #7848F4;
+    color: white;
+}
+
+.btn-book {
+    background: #7848F4;
+    color: white;
+    border: none;
+    padding: 0.85rem 2.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(120, 72, 244, 0.25);
+    transition: all 0.25s ease;
+}
+
+.btn-book:hover {
+    background: #6636d6;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(120, 72, 244, 0.35);
+}
+
+/* Optional close X (top-right) */
+.popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.popup-close:hover {
+    color: #333;
+}
+
+/* Existing styles you probably already have */
+.logo {
+    font-size: 36px;
+    font-weight: 700;
+}
+.logo span {
+    color: #7848F4;           /* your purple */
+}
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.btn-signup {
+    background: #7848F4;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+.btn-signup:hover {
+    background: #6636d6;
+}
+
+/* New / updated styles for logged-in state */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f3e8ff;          /* light purple background */
+    color: #7848F4;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #7848F4;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #333;
+    display: none;                /* hide name on mobile by default */
+}
+
+@media (min-width: 768px) {
+    .user-name {
+        display: inline;
+    }
+}
+
+/* Logout button */
+.logout-btn {
+    background: transparent;
+    border: 1px solid #e53e3e;   /* red border for visibility */
+    color: #e53e3e;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #e53e3e;
+    color: white;
+    border-color: #e53e3e;
+}
+
+/* ──────────────────────────────────────────────
+   ADMIN GLOBAL STYLES
+   ────────────────────────────────────────────── */
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #f9fafb;
+    color: #111827;
+}
+
+/* Header – matches screenshot exactly */
+header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+header a {
+    transition: color 0.2s ease;
+}
+
+header .text-purple-600 {
+    color: #9333ea; /* or #a855f7 – choose the one closest to your purple */
+}
+
+header nav a {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 500;
+}
+
+header nav a.border-b-4 {
+    border-color: #9333ea;
+}
+
+/* User avatar + info */
+header .rounded-full {
+    background-color: #f3e8ff;
+    color: #9333ea;
+    border: 2px solid #e9d5ff;
+    font-weight: 700;
+}
+
+/* Main content wrapper */
+main {
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+}
+
+/* Admin form card – exact match to screenshot */
+.admin-card {
+    background: white;
+    border-radius: 1.5rem; /* 24px */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+    padding: 3.5rem 3rem;
+    max-width: 56rem; /* ≈900px */
+    margin: 0 auto;
+}
+
+.admin-card h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.admin-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 3.5rem 0 1.75rem;
+    text-align: center;
+}
+
+/* Form labels */
+.admin-card label {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+/* Inputs & Selects */
+.admin-card input,
+.admin-card select,
+.admin-card textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    font-size: 1.05rem;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.admin-card input:focus,
+.admin-card select:focus,
+.admin-card textarea:focus {
+    outline: none;
+    border-color: #a855f7;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+    ring-color: #a855f7;
+}
+
+/* File input */
+.admin-card input[type="file"] {
+    padding: 0.75rem;
+    background-color: #f9fafb;
+}
+
+/* Grid layouts */
+.admin-card .grid {
+    gap: 2rem;
+}
+
+/* Pricing + Amount conditional */
+#amount-field.hidden {
+    display: none;
+}
+
+/* Submit button – exact match */
+.admin-card button[type="submit"] {
+    width: 100%;
+    background: #9333ea;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(147, 51, 234, 0.2);
+}
+
+.admin-card button[type="submit"]:hover {
+    background: #7e22ce;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(147, 51, 234, 0.3);
+}
+
+/* Error messages */
+.admin-card .text-red-600 {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .admin-card {
+        padding: 2.5rem 1.5rem;
+        border-radius: 1rem;
+    }
+
+    .admin-card h1 {
+        font-size: 2rem;
+    }
+
+    header nav {
+        display: none; /* you can add mobile menu later */
+    }
+}
