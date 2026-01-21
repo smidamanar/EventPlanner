@@ -32,7 +32,7 @@ class MS_EventController extends Controller
             'end_date'    => 'required|date|after_or_equal:start_date',
             'place'       => 'required|string|max:255',
             'capacity'    => 'required|integer|min:1',
-            'price'       => 'nullable|numeric|min:0',
+            'price'       => 'nullable|numeric|min:0',           // ← consistent name
             'category_id' => 'required|exists:categories,id',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
@@ -44,6 +44,8 @@ class MS_EventController extends Controller
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('events', 'public');
         }
+
+        
 
         MS_Event::create($validated);
 
@@ -66,7 +68,7 @@ class MS_EventController extends Controller
             'end_date'    => 'required|date|after_or_equal:start_date',
             'place'       => 'required|string|max:255',
             'capacity'    => 'required|integer|min:1',
-            'price'       => 'nullable|numeric|min:0',
+            'price'       => 'nullable|numeric|min:0',           // ← consistent name
             'category_id' => 'required|exists:categories,id',
             'status'      => 'sometimes|in:active,archived',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',

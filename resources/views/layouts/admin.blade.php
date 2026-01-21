@@ -11,8 +11,18 @@
         <div class="logo">Event <span>Planner</span></div>
 
         <nav>
-            <a href="{{ route('admin.categories.index') }}" class="{{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">Categories</a>
-            <a href="{{ route('admin.events.index') }}" class="{{ request()->routeIs('admin.events.*') ? 'active' : '' }}">Events</a>
+            <a href="{{ route('admin.categories.index') }}" 
+               class="{{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
+                Categories
+            </a>
+            <a href="{{ route('admin.events.index') }}" 
+               class="{{ request()->routeIs('admin.events.*') ? 'active' : '' }}">
+                Events
+            </a>
+            <a href="{{ route('admin.registrations.all') }}" 
+               class="{{ request()->routeIs('admin.registrations.*') ? 'active' : '' }}">
+                Registrations
+            </a>
         </nav>
 
         <div class="user-profile" id="user-toggle">
@@ -25,7 +35,7 @@
             <div class="dropdown-menu" id="user-dropdown">
                 <ul>
                     <li><a href="{{ route('profile.edit') }}">View profile</a></li>
-                    <li><a href="{{ route('user.registrations.index') }}">Registrations</a></li>
+                    <li><a href="{{ route('user.registrations.index') }}">My Registrations</a></li>
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

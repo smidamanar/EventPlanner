@@ -29,15 +29,35 @@
                 <div class="pricing">{{ $event->is_free ? 'Free' : ($event->price ? $event->price . '$' : '—') }}</div>
                 <div>{{ $event->capacity ?? '—' }}</div>
                 <div>{{ $event->place ?? '—' }}</div>
+
                 <div class="actions">
-                    <button class="actions-btn" onclick="event.stopPropagation(); toggleDropdown({{ $loop->index }})">⋯</button>
+                    <button class="actions-btn" onclick="event.stopPropagation(); toggleDropdown({{ $loop->index }})">...</button>
+
                     <div class="actions-dropdown" id="dropdown-{{ $loop->index }}">
                         <ul>
-                            <li><a href="{{ route('admin.events.edit', $event) }}">Edit</a></li>
                             <li>
-                                <form action="{{ route('admin.events.archive', $event) }}" method="POST" onsubmit="return confirm('Archive this event?');">
+                                <a href="{{ route('admin.events.edit', $event) }}">Edit</a>
+                            </li>
+
+                            <li>
+                                <form action="{{ route('admin.events.archive', $event) }}" method="POST" style="display:inline">
                                     @csrf
-                                    <button type="submit">Archive</button>
+                                    @method('POST')
+                                    <button type="submit" class="text-warning" 
+                                            onclick="return confirm('Archive this event?')">
+                                        Archive
+                                    </button>
+                                </form>
+                            </li>
+
+                            <li>
+                                <form action="{{ route('admin.events.destroy', $event) }}" method="POST" style="display:inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="text-danger" 
+                                            onclick="return confirm('Delete this event permanently? This cannot be undone.')">
+                                        Delete
+                                    </button>
                                 </form>
                             </li>
                         </ul>
@@ -59,7 +79,7 @@
                 if (el.id !== `dropdown-${index}`) el.style.display = 'none';
             });
             const dropdown = document.getElementById(`dropdown-${index}`);
-            if (dropdown) dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
         }
 
         document.addEventListener('click', e => {

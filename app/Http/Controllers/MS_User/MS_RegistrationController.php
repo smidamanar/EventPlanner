@@ -7,15 +7,18 @@ use App\Models\MS_Registration;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MS_Event;
 
+
 class MS_RegistrationController extends Controller
 {
     /**
-     * My registrations page
-     * URL: /my-registrations
+     * /my-registrations
+     * Shows ONLY the current user's own registrations
+     * Accessible to both normal users and admins
      */
     public function index()
     {
-        $registrations = MS_Registration::where('user_id', Auth::id())
+        $registrations = MS_Registration::query()
+            ->where('user_id', Auth::id())
             ->with(['event' => function ($q) {
                 $q->select('id', 'title', 'start_date');
             }])
@@ -26,8 +29,29 @@ class MS_RegistrationController extends Controller
     }
 
     /**
-     * Register to event
-     * POST: /events/{event}/register
+     * /admin/registrations
+     * Shows ALL registrations from all users
+     * Protected by ms_admin middleware
+     */
+    public function adminIndex()
+    {
+        $registrations = MS_Registration::query()
+            ->with([
+                'event' => function ($q) {
+                    $q->select('id', 'title', 'start_date');
+                },
+                'user' => function ($q) {
+                    $q->select('id', 'name', 'email');
+                }
+            ])
+            ->latest('created_at')
+            ->paginate(15);
+
+        return view('MS_Admin.registrations.index', compact('registrations'));
+    }
+
+    /**
+     * Register user for an event
      */
     public function store(MS_Event $event)
     {
@@ -45,5 +69,14 @@ class MS_RegistrationController extends Controller
         ]);
 
         return back()->with('success', 'Registration successful');
+    }
+
+
+    public function destroy(MS_Registration $registration)
+    {
+        $registration->delete();
+
+        return redirect()->route('user.registrations.index')
+            ->with('success', 'Category deleted successfully.');
     }
 }

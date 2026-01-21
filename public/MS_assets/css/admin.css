@@ -285,7 +285,7 @@ p{
 
 .table-header {
     display: grid;
-    grid-template-columns: 2fr 1.5fr 1.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 0.5fr;
     background-color: #f8f9fa;
     padding: 10px 20px;
     font-size: 14px;
@@ -295,7 +295,7 @@ p{
 
 .table-row {
     display: grid;
-    grid-template-columns:2fr 1.5fr 1.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns:1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 0.5fr;
     padding: 15px 20px;
     border-bottom: 1px solid #eee;
     align-items: center;
@@ -488,7 +488,7 @@ p{
     background: #6f42c1;
     color: white;
     padding: 12px 24px;
-    border-radius: 50px;
+    border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
     font-size: 15px;
@@ -505,7 +505,7 @@ p{
 
 .table-head {
     display: grid;
-    grid-template-columns: 3fr 1.5fr 1.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 0.5fr;
     background: #f8f9fa;
     padding: 16px 30px;
     font-weight: 600;
@@ -515,7 +515,7 @@ p{
 
 .table-row {
     display: grid;
-    grid-template-columns: 3fr 1.5fr 1.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 0.5fr;
     padding: 18px 30px;
     border-bottom: 1px solid #f0f0f0;
     align-items: center;
@@ -654,4 +654,314 @@ footer {
     padding-top: 32px;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/* ==========================================================================
+   NEW STYLES ADDED FOR CREATE EVENT FORM (no conflicts with existing classes)
+   ========================================================================== */
+
+.form-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 1.8rem 0;
+    color: #1f2937;
+    text-align: center;
+}
+
+.form-error-box {
+    color: #dc2626;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+}
+
+.form-error-box strong {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-error-box ul {
+    margin: 0.5rem 0 0 1.2rem;
+    padding-left: 1rem;
+}
+
+.form-error-text {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    border-width: 2px;
+}
+
+/* Better spacing for grouped fields on smaller screens */
+@media (max-width: 768px) {
+    .date-group,
+    .place-capacity,
+    .pricing-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px 14px;
+        font-size: 1rem;
+    }
+    
+    .create-button {
+        padding: 14px;
+        font-size: 1.05rem;
+    }
+}
+
+/* ==========================================================================
+   Admin Dashboard - Custom Styles
+   ========================================================================== */
+
+.admin-container {
+    padding: 1.5rem;
+    max-width: 80rem; /* ~1280px */
+    margin: 0 auto;
+}
+
+/* Greeting */
+.greeting {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+.welcome-line {
+    margin-top: 0.375rem;
+    color: #4b5563;
+    font-size: 1rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.15s ease;
+}
+
+.stat-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-value {
+    margin-top: 0.5rem;
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.stat-link {
+    margin-top: 1rem;
+    display: inline-block;
+    font-size: 0.875rem;
+    color: #4f46e5;
+}
+
+.stat-link:hover {
+    color: #4338ca;
+}
+
+/* Recent Events */
+.recent-section {
+    margin-top: 2.5rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.add-button {
+    font-size: 0.875rem;
+    color: #4f46e5;
+    font-weight: 500;
+}
+
+.add-button:hover {
+    color: #4338ca;
+}
+
+.empty-state {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    color: #6b7280;
+}
+
+.event-list-container {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.event-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.event-item {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.15s;
+}
+
+.event-item:hover {
+    background-color: #f9fafb;
+}
+
+.event-item:not(:last-child) {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.event-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111827;
+    margin: 0;
+}
+
+.event-meta {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.event-view-link {
+    color: #4f46e5;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.event-view-link:hover {
+    color: #4338ca;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: relative;
+    padding: 10px;
+}
+
+.event-image {
+    width: calc(100% - 15px);
+    margin: 0 auto;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.event-badge {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    background: white;
+    color: #7848f4;
+    font-size: 0.55rem;
+    padding: 4px 8px;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.event-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.event-date {
+    font-size: 12px;
+    color: #7848f4;
+    margin-bottom: 10px;
+}
+
+.event-type {
+    font-size: 12px;
+    color: #666;
+}
+
+.load-more {
+    display: block;
+    margin: 40px auto 0;
+    background: #7848f4;
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
 }

@@ -33,5 +33,20 @@
 
     <!-- Fixed path: forward slashes only -->
     <script src="{{ asset('MS_assets/js/app.js') }}" defer></script>
+        <script>
+        const toggle = document.getElementById('user-toggle');
+        const menu = document.getElementById('user-dropdown');
+
+        toggle?.addEventListener('click', e => {
+            e.stopPropagation();
+            menu?.classList.toggle('show');
+        });
+
+        document.addEventListener('click', e => {
+            if (!toggle?.contains(e.target)) {
+                menu?.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>

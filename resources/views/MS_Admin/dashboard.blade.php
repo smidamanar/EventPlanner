@@ -1,91 +1,97 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')
+@section('title', 'Admin Dashboard')
 
-@section('content')
-    <div class="dashboard-container">
-        <!-- Title -->
-        <h1>List of Events</h1>
-
-        <!-- Table Container -->
-        <div class="events-table">
-            <div class="table-header">
-                <h3>Events</h3>
-                <a href="{{ route('admin.events.create') }}" class="create-event-btn">Create event</a>
-            </div>
-
-            <div class="table-grid">
-                <!-- Table Head -->
-                <div class="table-head">
-                    <div>Event name</div>
-                    <div>Start date</div>
-                    <div>End date</div>
-                    <div>Pricing</div>
-                    <div>Capacity</div>
-                    <div>Place</div>
-                    <div></div>
-                </div>
-
-                <!-- Rows -->
-                @forelse ($events as $event)
-                    <div class="table-row">
-                        <div class="event-name">{{ $event->title }}</div>
-                        <div>{{ $event->start_date?->format('M d, Y, ga') ?? '—' }}</div>
-                        <div>{{ $event->end_date?->format('M d, Y, ga') ?? '—' }}</div>
-                        <div class="pricing">{{ $event->is_free ? 'Free' : ($event->price ? $event->price . '$' : '—') }}</div>
-                        <div>{{ $event->capacity ?? '—' }}</div>
-                        <div>{{ $event->place ?? '—' }}</div>
-                        <div class="actions">
-                            <button class="actions-btn" onclick="toggleDropdown({{ $loop->index }})">⋯</button>
-                            <div class="actions-dropdown" id="dropdown-{{ $loop->index }}">
-                                <ul>
-                                    <li><a href="{{ route('admin.events.edit', $event) }}">Edit</a></li>
-                                    <li>
-                                        <form action="{{ route('admin.events.archive', $event) }}" method="POST" onsubmit="return confirm('Archive this event?');">
-                                            @csrf
-                                            <button type="submit">Archive</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                    <div class="table-row empty">
-                        <div colspan="7">No events found.</div>
-                    </div>
-                @endforelse
-            </div>
-
-            <div class="pagination">
-                {{ $events->links() }}
-            </div>
-        </div>
-    </div>
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
 @endsection
 
-@section('scripts')
-    <script>
-        function toggleDropdown(index) {
-            // Close all other dropdowns
-            document.querySelectorAll('.actions-dropdown').forEach(el => {
-                if (el.id !== `dropdown-${index}`) el.style.display = 'none';
-            });
+@section('content')
 
-            // Toggle clicked one
-            const dropdown = document.getElementById(`dropdown-${index}`);
-            if (dropdown) {
-                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-            }
-        }
+    <div class="admin-container">
 
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.actions')) {
-                document.querySelectorAll('.actions-dropdown').forEach(menu => {
-                    menu.style.display = 'none';
-                });
-            }
-        });
-    </script>
+        <!-- Greeting -->
+        <div class="greeting">
+            <h1 class="page-title">Dashboard</h1>
+            <p class="welcome-line">
+                Hello, <strong>{{ auth()->user()->name }}</strong> • {{ now()->format('d M Y') }}
+            </p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3 class="stat-label">Total Events</h3>
+                <p class="stat-value">{{ $totalEvents }}</p>
+                
+            </div>
+
+            <div class="stat-card">
+                <h3 class="stat-label">Registrations</h3>
+                <p class="stat-value">{{ $totalRegistrations }}</p>
+                <!-- <a href="..." class="stat-link">View all →</a> -->
+            </div>
+
+            <div class="stat-card">
+                <h3 class="stat-label">Categories</h3>
+                <p class="stat-value">{{ $totalCategories }}</p>
+                
+            </div>
+
+            <div class="stat-card">
+                <h3 class="stat-label">Users</h3>
+                <p class="stat-value">{{ $totalUsers }}</p>
+                <!-- <a href="..." class="stat-link">Manage →</a> -->
+            </div>
+        </div>
+
+        <!-- Recent Events -->
+        <section class="recent-section">
+            <div class="section-header">
+                <h2 class="section-title">Recent Events</h2>
+                
+            </div>
+
+
+            <div class="events-grid">
+                @foreach($events as $event)
+                    <a href="{{ route('events.show', $event) }}" class="event-link">
+                        <div class="event-card">
+                            @if($event->image && Storage::disk('public')->exists($event->image))
+                                <img src="{{ asset('storage/' . $event->image) }}"
+                                     alt="{{ $event->title }}"
+                                     class="event-image">
+                            @else
+                                <img src="https://via.placeholder.com/400x225?text=No+Image"
+                                     alt="Default event image"
+                                     class="event-image">
+                            @endif
+
+                            <div class="event-content">
+                                <span class="event-badge">
+                                    {{ $event->is_free ? 'FREE' : 'PAID' }}
+                                </span>
+
+                                <h3 class="event-title">{{ $event->title }}</h3>
+
+                                <p class="event-date">
+                                    {{ $event->start_date?->format('l, F j, g:i A') ?? 'Date TBA' }}
+                                </p>
+
+                                <p class="event-type">
+                                    {{ $event->place ?? 'ONLINE EVENT - Attend anywhere' }}
+                                </p>
+                            </div>
+
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+
+
+        
+        </section>
+
+    </div>
+
 @endsection

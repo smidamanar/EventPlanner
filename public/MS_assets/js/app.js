@@ -17,4 +17,16 @@ function closeBookingPopup() {
             document.getElementById('user-dropdown')?.classList.remove('show');
         }
     });
- 
+        const toggle = document.getElementById('user-toggle');
+        const menu = document.getElementById('user-dropdown');
+
+        toggle?.addEventListener('click', e => {
+            e.stopPropagation();
+            menu?.classList.toggle('show');
+        });
+
+        document.addEventListener('click', e => {
+            if (!toggle?.contains(e.target)) {
+                menu?.classList.remove('show');
+            }
+        });

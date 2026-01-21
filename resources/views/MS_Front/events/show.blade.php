@@ -7,7 +7,7 @@
     <div class="event-hero-section">
         @if($event->image)
             <img 
-                src="{{ asset($event->image) }}" 
+                src="{{ asset('storage/' . $event->image) }}" 
                 alt="{{ $event->title }}" 
                 class="event-hero-bg"
             >
@@ -27,24 +27,26 @@
             </div>
 
             <div>
-                <h1 class="event-title-hero">{{ $event->title }}</h1>
+                <a class="event-title-hero">{{ $event->title }}</a>
                 <div class="event-place-hero">
                     {{ $event->place ?? 'Online Event' }}
                 </div>
-                <p class="event-teaser-hero">
+                <a class="event-teaser-hero">
                     {{ \Illuminate\Support\Str::limit($event->description ?? 'No description available.', 320, '...') }}
-                </p>
+                </a> <br><br><br>
 
-                @if($event->remainingPlaces() > 0)
-                    <button 
-                        onclick="openBookingPopup()"
-                        class="event-btn-book"
-                    >
-                        Book now
-                    </button>
-                @else
-                    <span class="event-btn-booked">Fully Booked</span>
-                @endif
+                @if(auth()->check() && $event->registrations()->where('user_id', auth()->id())->exists())
+    <span class="event-btn-booked">Already Booked</span>
+@elseif($event->remainingPlaces() > 0)
+    <button 
+        onclick="openBookingPopup()"
+        class="event-btn-book"
+    >
+        Book now
+    </button>
+@else
+    <span class="event-btn-booked">Fully Booked</span>
+@endif
             </div>
         </div>
     </div>
@@ -61,14 +63,14 @@
         <div>
             <h2 class="event-section-title">Hours</h2>
             <div class="space-y-3 text-gray-700 text-lg">
-                <p><strong>Weekdays hour:</strong> {{ $event->weekday_hours ?? 'Not specified' }}</p>
-                <p><strong>Sunday hour:</strong> {{ $event->sunday_hours ?? 'Not specified' }}</p>
+                <a>Weekdays hour: <span class="event-capacity-highlight">{{ $event->weekday_hours ?? 'Not specified' }}</span></a><br><br>
+                <a>Sunday hour: <span class="event-capacity-highlight">{{ $event->sunday_hours ?? 'Not specified' }}</span></a>
             </div>
 
             <h2 class="event-section-title mt-10">Capacity</h2>
-            <p class="text-xl text-gray-700">
+            <a class="text-xl text-gray-700">
                 Seats number : <span class="event-capacity-highlight">{{ $event->capacity }} persons</span>
-            </p>
+            </a>
         </div>
     </div>
 
@@ -86,7 +88,7 @@
                             <div class="relative">
                                 @if($related->image)
                                     <img 
-                                        src="{{ asset($related->image) }}" 
+                                        src="{{ asset('storage/' . $related->image)  }}" 
                                         alt="{{ $related->title }}" 
                                         class="event-image"
                                     >
