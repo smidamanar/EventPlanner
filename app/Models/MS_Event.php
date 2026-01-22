@@ -32,7 +32,7 @@ class MS_Event extends Model
         'is_free'    => 'boolean',
     ];
 
-    /* ================= RELATIONS ================= */
+   
 
     public function category()
     {
@@ -49,7 +49,7 @@ class MS_Event extends Model
         return $this->hasMany(MS_Registration::class, 'event_id');
     }
 
-    /* ================= BUSINESS LOGIC ================= */
+   
 
     public function remainingPlaces()
     {

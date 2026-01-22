@@ -10,10 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MS_EventController extends Controller
 {
-    /**
-     * Show list of active events
-     * URL: /
-     */
+
 
 public function index(Request $request)
     {
@@ -43,9 +40,8 @@ public function index(Request $request)
 
         $categories = MS_Category::all();
 
-        // ────────────────────────────────────────────────
-        // TEMPORARY DEBUG - remove or comment out later
-        if (true) { // ← set to false when done debugging
+
+        if (true) { 
             $debug = [
                 'current_time'          => now()->toDateTimeString(),
                 'total_matching_query'  => $query->count(),
@@ -64,10 +60,10 @@ public function index(Request $request)
                 })->toArray(),
             ];
 
-            // You can also dd($debug); to stop & inspect
-            view()->share('debug', $debug); // ← pass to blade
+            
+            view()->share('debug', $debug); 
         }
-        // ────────────────────────────────────────────────
+        
 
         return view('MS_Front.events.index', compact('events', 'categories'));
     }
@@ -75,10 +71,7 @@ public function index(Request $request)
 
     
 
-    /**
-     * Show single event
-     * URL: /events/{event}
-     */
+
 public function show(MS_Event $event)
 {
     $relatedEvents = MS_Event::where('status', 'active')

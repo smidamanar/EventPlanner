@@ -3,7 +3,7 @@
 @section('title', $event->title . ' - Event Planner')
 
 @section('content')
-    <!-- Hero Section – matches the screenshot style -->
+    
     <div class="event-hero-section">
         @if($event->image)
             <img 
@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <!-- Description + Hours + Capacity – two-column layout -->
+    
     <div class="event-info-grid">
         <div>
             <h2 class="event-section-title">Description</h2>
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <!-- Related Events – styled like your event-grid / event-card -->
+    
     @if($relatedEvents->isNotEmpty())
         <section class="events-section py-16 bg-gray-50">
             <div class="content-container">
@@ -119,10 +119,10 @@
         </section>
     @endif
 
-<!-- Booking Popup -->
+
 <div id="bookingPopup" class="booking-popup">
     <div class="popup-content">
-        <!-- Close button (X) -->
+      
         <button class="popup-close" onclick="closeBookingPopup()">&times;</button>
 
         <h2>Book Event</h2>
@@ -131,13 +131,13 @@
             <button onclick="closeBookingPopup()" class="btn-cancel">Cancel</button>
 
             @if(auth()->check())
-                <!-- Logged in: direct POST to store registration -->
+                
                 <form method="POST" action="{{ route('registrations.store', $event->id) }}" style="display: inline;">
                     @csrf
                     <button type="submit" class="btn-book">Book now</button>
                 </form>
             @else
-                <!-- Not logged in: redirect to login with return URL -->
+                
                 <a href="{{ route('login') }}?intended={{ urlencode(url()->current()) }}" class="btn-book">
                     Book now
                 </a>
@@ -155,7 +155,7 @@
             document.getElementById('bookingPopup').style.display = 'none';
         }
 
-        // Optional: close when clicking outside the popup content
+        
         document.getElementById('bookingPopup').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeBookingPopup();

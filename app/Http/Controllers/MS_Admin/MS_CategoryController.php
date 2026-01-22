@@ -48,11 +48,17 @@ class MS_CategoryController extends Controller
             ->with('success', 'Category updated successfully.');
     }
 
-    public function destroy(MS_Category $category)
-    {
-        $category->delete();
 
-        return redirect()->route('admin.categories.index')
-            ->with('success', 'Category deleted successfully.');
+
+public function destroy(MS_Category $category)
+{
+    if ($category->events()->exists()) {
+        return back()->with('warning', 'Sorry, you cannot delete this category because it is related to an existing event.');
     }
+
+    $category->delete();
+
+    return redirect()->route('admin.categories.index')
+                     ->with('success', 'Category deleted successfully.');
+}
 }

@@ -12,9 +12,7 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Show the profile edit form
-     */
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -22,26 +20,24 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update profile (name, email, optional password)
-     */
+
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = $request->user();
 
         $validated = $request->validated();
 
-        // Handle password only if provided
+        
         if ($request->filled('password')) {
             $validated['password'] = Hash::make($request->password);
         } else {
-            // Prevent updating password if not provided
+           
             unset($validated['password']);
         }
 
         $user->fill($validated);
 
-        // Reset email verification if email changed
+        
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
@@ -52,9 +48,7 @@ class ProfileController extends Controller
             ->with('status', 'profile-updated');
     }
 
-    /**
-     * Delete account (optional - you can remove this method if not needed)
-     */
+
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [

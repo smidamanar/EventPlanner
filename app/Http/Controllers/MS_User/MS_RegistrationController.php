@@ -10,11 +10,7 @@ use App\Models\MS_Event;
 
 class MS_RegistrationController extends Controller
 {
-    /**
-     * /my-registrations
-     * Shows ONLY the current user's own registrations
-     * Accessible to both normal users and admins
-     */
+
     public function index()
     {
         $registrations = MS_Registration::query()
@@ -28,11 +24,7 @@ class MS_RegistrationController extends Controller
         return view('MS_User.registrations.index', compact('registrations'));
     }
 
-    /**
-     * /admin/registrations
-     * Shows ALL registrations from all users
-     * Protected by ms_admin middleware
-     */
+
     public function adminIndex()
     {
         $registrations = MS_Registration::query()
@@ -50,9 +42,7 @@ class MS_RegistrationController extends Controller
         return view('MS_Admin.registrations.index', compact('registrations'));
     }
 
-    /**
-     * Register user for an event
-     */
+
     public function store(MS_Event $event)
     {
         if ($event->remainingPlaces() <= 0) {

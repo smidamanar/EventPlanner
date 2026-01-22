@@ -3,7 +3,8 @@
 @section('title', 'Edit Event')
 
 @section('content')
-    <h1>Edit Event</h1>
+<div class="form-container">
+    <p class="form-title">Edit Event</p>
 
     <form action="{{ route('admin.events.update', $event) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -103,4 +104,5 @@
             if (price.disabled) price.value = '';
         });
     </script>
+</div>
 @endsection

@@ -3,7 +3,7 @@
 @section('title', $event->title . ' - Event Planner')
 
 @section('content')
-    <!-- Hero Section – matches the screenshot style -->
+   
     <div class="event-hero-section">
         @if($event->image)
             <img 
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <!-- Description + Hours + Capacity – two-column layout -->
+    
     <div class="event-info-grid">
         <div>
             <h2 class="event-section-title">Description</h2>
@@ -69,6 +69,6 @@
                 </a>
             </div>
 
-    <!-- Related Events – styled like your event-grid / event-card -->
+    
 @endsection
 

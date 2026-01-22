@@ -68,7 +68,7 @@ class MS_EventController extends Controller
             'end_date'    => 'required|date|after_or_equal:start_date',
             'place'       => 'required|string|max:255',
             'capacity'    => 'required|integer|min:1',
-            'price'       => 'nullable|numeric|min:0',           // ← consistent name
+            'price'       => 'nullable|numeric|min:0',          
             'category_id' => 'required|exists:categories,id',
             'status'      => 'sometimes|in:active,archived',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',

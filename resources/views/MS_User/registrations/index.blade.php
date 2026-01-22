@@ -45,7 +45,7 @@
                                     </button>
                                 </form>
                             </li>
-                            <!-- You can easily add more options later, e.g. Edit, View details, etc. -->
+                           
                         </ul>
                     </div>
                 </div>
@@ -61,10 +61,10 @@
         {{ $registrations->links() }}
     </div>
 
-    <!-- Dropdown JavaScript – placed here so it's always available -->
+    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Handle all actions buttons
+           
             document.querySelectorAll('.actions-btn').forEach(button => {
                 button.addEventListener('click', function (e) {
                     e.stopPropagation();
@@ -75,19 +75,19 @@
 
                     if (!dropdown) return;
 
-                    // Close all other dropdowns
+                    
                     document.querySelectorAll('.actions-dropdown.show').forEach(el => {
                         if (el !== dropdown) {
                             el.classList.remove('show');
                         }
                     });
 
-                    // Toggle current one
+                    
                     dropdown.classList.toggle('show');
                 });
             });
 
-            // Close dropdowns when clicking anywhere else
+           
             document.addEventListener('click', function (e) {
                 if (!e.target.closest('.actions')) {
                     document.querySelectorAll('.actions-dropdown.show').forEach(el => {
@@ -96,7 +96,7 @@
                 }
             });
 
-            // Optional: close on Escape key
+           
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') {
                     document.querySelectorAll('.actions-dropdown.show').forEach(el => {

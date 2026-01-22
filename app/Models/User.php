@@ -32,7 +32,7 @@ class User extends Authenticatable
         ];
     }
 
-    /* ================= RELATIONS ================= */
+    
 
     public function msEvents()
     {

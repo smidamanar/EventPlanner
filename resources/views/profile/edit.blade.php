@@ -16,7 +16,7 @@
             @csrf
             @method('PATCH')
 
-            <!-- Name -->
+           
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input 
@@ -33,7 +33,7 @@
                 @enderror
             </div>
 
-            <!-- Email -->
+           
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <input 
@@ -49,7 +49,6 @@
                 @enderror
             </div>
 
-            <!-- New Password -->
             <div class="form-group">
                 <label for="password">New Password <small>(leave blank if not changing)</small></label>
                 <input 
@@ -63,7 +62,7 @@
                 @enderror
             </div>
 
-            <!-- Confirm New Password -->
+            
             <div class="form-group">
                 <label for="password_confirmation">Confirm New Password</label>
                 <input 
@@ -74,7 +73,7 @@
                 >
             </div>
 
-            <!-- Buttons -->
+          
             <div class="form-actions">
                 <button type="submit" class="btn save">Save Changes</button>
             </div>

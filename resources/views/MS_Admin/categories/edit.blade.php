@@ -3,7 +3,9 @@
 @section('title', 'Edit Category')
 
 @section('content')
-    <h1>Edit Category</h1>
+<div class="form-container">
+    <p class="form-title">Edit Category</p>
+   
 
     <form action="{{ route('admin.categories.update', $category) }}" method="POST">
         @csrf
@@ -20,4 +22,5 @@
             <button type="submit" class="create-btn">Update</button>
         </div>
     </form>
+</div>
 @endsection

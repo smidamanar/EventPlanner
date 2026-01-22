@@ -30,14 +30,26 @@
                             </li>
 
                             <li>
-                                <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" style="display:inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="text-danger"
-                                            onclick="return confirm('Delete this category permanently? This cannot be undone.')">
-                                        Delete
-                                    </button>
-                                </form>
+<form action="{{ route('admin.categories.destroy', $category) }}" method="POST" style="display:inline">
+    @csrf
+    @method('DELETE')
+
+    @if($category->events_count ?? 0 > 0)
+        <button type="button" 
+                class="text-muted" 
+                disabled 
+                title="Cannot delete — this category is used in one or more events"
+                style="cursor: not-allowed; opacity: 0.6; background: none; border: none; padding: 0; font-size: inherit;">
+            Delete
+        </button>
+    @else
+        <button type="submit" 
+                class="text-danger"
+                onclick="return confirm('Delete this category permanently? This cannot be undone.')">
+            Delete
+        </button>
+    @endif
+</form>
                             </li>
                         </ul>
                     </div>
