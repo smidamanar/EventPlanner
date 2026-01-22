@@ -32,10 +32,10 @@ class AuthenticatedSessionController extends Controller
 
         // Redirect based on the 'role' column
         if ($user->role === 'admin') {
-            return redirect()->route('admin.dashboard'); // Admin dashboard
+            return redirect()->route('admin.dashboard'); 
         }
 
-        return redirect()->route('events.index'); // Normal user
+        return redirect()->route('events.index'); 
     }
 
     /**
@@ -49,6 +49,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/'); // Back to welcome page
+        return redirect('/'); 
     }
 }

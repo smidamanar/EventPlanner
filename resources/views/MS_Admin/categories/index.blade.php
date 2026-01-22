@@ -11,13 +11,13 @@
             <a href="{{ route('admin.categories.create') }}" class="create-event-btn">Create category</a>
         </header>
 
-        <div class="table-header">
+        <div class="table-header categories-header">
             <div>Category</div>
             <div></div>
         </div>
 
         @forelse ($categories as $category)
-            <div class="table-row">
+            <div class="table-row categories-row">
                 <div class="event-name">{{ $category->name }}</div>
 
                 <div class="actions">

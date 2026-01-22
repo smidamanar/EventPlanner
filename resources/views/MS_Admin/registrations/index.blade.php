@@ -10,7 +10,7 @@
             <h3>Total registrations: {{ $registrations->total() }}</h3>
         </header>
 
-        <div class="table-header">
+        <div class="table-header registrations-header">
             <div>Event Title</div>
             <div>Start Date</div>
             <div>User Name</div>
@@ -19,7 +19,7 @@
         </div>
 
         @forelse ($registrations as $registration)
-            <div class="table-row">
+            <div class="table-row registrations-row">
                 <div>{{ $registration->event?->title ?? '—' }}</div>
                 <div>
                     {{ $registration->event?->start_date 

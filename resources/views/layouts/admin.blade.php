@@ -8,7 +8,11 @@
 </head>
 <body>
     <header>
-        <div class="logo">Event <span>Planner</span></div>
+            <div class="link"> 
+       <a href="{{ route('admin.dashboard') }}" class="logo">
+    Event <span>Planner</span>
+</a>
+    </div>
 
         <nav>
             <a href="{{ route('admin.categories.index') }}" 

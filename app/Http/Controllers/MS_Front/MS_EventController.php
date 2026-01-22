@@ -19,27 +19,23 @@ public function index(Request $request)
     {
         $query = MS_Event::query()
             ->where('status', 'active')
-            ->where('start_date', '>=', now()); // ← changed to full datetime comparison (recommended)
+            ->where('start_date', '>=', now()); 
 
-        // Optional: Uncomment to see ALL active events regardless of date (for debugging)
-        // $query = MS_Event::query()->where('status', 'active');
-
-        // Search
         if ($request->filled('search') && trim($request->search) !== '') {
             $query->where('title', 'like', '%' . trim($request->search) . '%');
         }
 
-        // Category filter
+        
         if ($request->filled('category') && is_numeric($request->category) && $request->category > 0) {
             $query->where('category_id', (int) $request->category);
         }
 
-        // Weekday filter
+        
         if ($request->filled('weekday') && in_array(strtolower($request->weekday), ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'])) {
             $query->whereRaw('LOWER(DAYNAME(start_date)) = ?', [strtolower($request->weekday)]);
         }
 
-        // Get events + pagination
+        
         $events = $query
             ->orderBy('start_date', 'asc')
             ->paginate(6)

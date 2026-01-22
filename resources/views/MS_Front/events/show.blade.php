@@ -146,5 +146,20 @@
     </div>
 </div>
 
+<script>
+        function openBookingPopup() {
+            document.getElementById('bookingPopup').style.display = 'flex';
+        }
 
+        function closeBookingPopup() {
+            document.getElementById('bookingPopup').style.display = 'none';
+        }
+
+        // Optional: close when clicking outside the popup content
+        document.getElementById('bookingPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingPopup();
+            }
+        });
+    </script>
 @endsection

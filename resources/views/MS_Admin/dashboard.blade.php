@@ -55,7 +55,7 @@
 
             <div class="events-grid">
                 @foreach($events as $event)
-                    <a href="{{ route('events.show', $event) }}" class="event-link">
+                    <a href="{{ route('admin.events.details', $event) }}" class="event-link">
                         <div class="event-card">
                             @if($event->image && Storage::disk('public')->exists($event->image))
                                 <img src="{{ asset('storage/' . $event->image) }}"

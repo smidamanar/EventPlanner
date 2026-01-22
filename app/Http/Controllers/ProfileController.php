@@ -6,13 +6,14 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
     /**
-     * Display the user's profile form.
+     * Show the profile edit form
      */
     public function edit(Request $request): View
     {
@@ -22,23 +23,37 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the user's profile information.
+     * Update profile (name, email, optional password)
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $validated = $request->validated();
+
+        // Handle password only if provided
+        if ($request->filled('password')) {
+            $validated['password'] = Hash::make($request->password);
+        } else {
+            // Prevent updating password if not provided
+            unset($validated['password']);
         }
 
-        $request->user()->save();
+        $user->fill($validated);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        // Reset email verification if email changed
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
+
+        return Redirect::route('profile.edit')
+            ->with('status', 'profile-updated');
     }
 
     /**
-     * Delete the user's account.
+     * Delete account (optional - you can remove this method if not needed)
      */
     public function destroy(Request $request): RedirectResponse
     {

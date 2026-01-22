@@ -1,29 +1,83 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends( auth()->user()->is_admin ? 'layouts.admin' : 'layouts.app' )
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
+@section('title', 'My Profile')
+
+@section('content')
+    <div class="profile-container">
+        <p>My Profile</p>
+
+        @if (session('status') === 'profile-updated')
+            <div class="alert success">
+                Profile updated successfully.
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('profile.update') }}" class="profile-form">
+            @csrf
+            @method('PATCH')
+
+            <!-- Name -->
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input 
+                    id="name" 
+                    name="name" 
+                    type="text" 
+                    value="{{ old('name', $user->name) }}" 
+                    required 
+                    autocomplete="name"
+                    autofocus
+                >
+                @error('name')
+                    <span class="error">{{ $message }}</span>
+                @enderror
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input 
+                    id="email" 
+                    name="email" 
+                    type="email" 
+                    value="{{ old('email', $user->email) }}" 
+                    required 
+                    autocomplete="username"
+                >
+                @error('email')
+                    <span class="error">{{ $message }}</span>
+                @enderror
             </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
+            <!-- New Password -->
+            <div class="form-group">
+                <label for="password">New Password <small>(leave blank if not changing)</small></label>
+                <input 
+                    id="password" 
+                    name="password" 
+                    type="password" 
+                    autocomplete="new-password"
+                >
+                @error('password')
+                    <span class="error">{{ $message }}</span>
+                @enderror
             </div>
-        </div>
+
+            <!-- Confirm New Password -->
+            <div class="form-group">
+                <label for="password_confirmation">Confirm New Password</label>
+                <input 
+                    id="password_confirmation" 
+                    name="password_confirmation" 
+                    type="password" 
+                    autocomplete="new-password"
+                >
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-actions">
+                <button type="submit" class="btn save">Save Changes</button>
+            </div>
+        </form>
     </div>
-</x-app-layout>
+@endsection

@@ -81,6 +81,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'ms_admin'])->group(
 
     Route::resource('categories', MS_CategoryController::class);
 
+    Route::get('events/{event}/details', [MS_EventController::class, 'showDetails'])
+         ->name('events.details');
+
     // ── Admin sees ALL registrations here ──
     Route::get('/registrations', [MS_RegistrationController::class, 'adminIndex'])
         ->name('registrations.all');

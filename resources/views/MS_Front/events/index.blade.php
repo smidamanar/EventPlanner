@@ -47,10 +47,6 @@
             <div class="no-events">
                 <div class="no-events-icon">📅</div>
                 <h3>No events for the moment</h3>
-                <p>
-                    There are currently no upcoming events.<br>
-                    Check back later or <a href="{{ route('register') }}">create your own event</a>!
-                </p>
             </div>
         @else
             <div class="events-grid">

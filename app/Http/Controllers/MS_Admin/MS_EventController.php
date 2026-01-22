@@ -109,4 +109,11 @@ class MS_EventController extends Controller
         return redirect()->route('admin.events.index')
             ->with('success', 'Event archived successfully.');
     }
+
+    public function showDetails(MS_Event $event)
+    {
+       
+
+        return view('MS_Admin.events.details', compact('event'));
+    }
 }
