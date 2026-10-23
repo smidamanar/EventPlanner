@@ -331,13 +331,13 @@ Before deploying publicly, set `APP_ENV=production`, `APP_DEBUG=false`, and use 
 
 | Events | Event Details |
 |--------|---------------|
-| ![Events](screenshot\events.png) | ![Event details](screenshot\event details.png) |
+| ![Events](screenshot/events.png) | ![Event details](screenshot/event%20details.png) |
 
 ## Administration
 
 | Dashboard | Event Management |
 |-----------|------------------|
-| ![Dashboard](screenshot\admin dashboard.png) | ![Event management](screenshot\event managment.png) |
+| ![Dashboard](screenshot/admin%20dashboard.png) | ![Event management](screenshot/event%20managment.png) |
 
 ---
 
