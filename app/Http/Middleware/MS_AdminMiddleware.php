@@ -10,12 +10,11 @@ class MS_AdminMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        
-        if (!$request->user()) {
+
+        if (! $request->user()) {
             abort(403, 'Unauthorized');
         }
 
-       
         if ($request->user()->role !== 'admin') {
             abort(403, 'Access denied');
         }

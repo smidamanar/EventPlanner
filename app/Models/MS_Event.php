@@ -28,11 +28,9 @@ class MS_Event extends Model
 
     protected $casts = [
         'start_date' => 'datetime',
-        'end_date'   => 'datetime',
-        'is_free'    => 'boolean',
+        'end_date' => 'datetime',
+        'is_free' => 'boolean',
     ];
-
-   
 
     public function category()
     {
@@ -48,8 +46,6 @@ class MS_Event extends Model
     {
         return $this->hasMany(MS_Registration::class, 'event_id');
     }
-
-   
 
     public function remainingPlaces()
     {

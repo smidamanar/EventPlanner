@@ -32,8 +32,6 @@ class User extends Authenticatable
         ];
     }
 
-    
-
     public function msEvents()
     {
         return $this->hasMany(MS_Event::class, 'created_by');

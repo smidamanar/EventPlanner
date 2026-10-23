@@ -29,7 +29,6 @@
             <div class="stat-card">
                 <h3 class="stat-label">Registrations</h3>
                 <p class="stat-value">{{ $totalRegistrations }}</p>
-                <!-- <a href="..." class="stat-link">View all →</a> -->
             </div>
 
             <div class="stat-card">
@@ -41,7 +40,6 @@
             <div class="stat-card">
                 <h3 class="stat-label">Users</h3>
                 <p class="stat-value">{{ $totalUsers }}</p>
-                <!-- <a href="..." class="stat-link">Manage →</a> -->
             </div>
         </div>
 

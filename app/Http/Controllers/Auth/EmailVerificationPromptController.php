@@ -9,7 +9,6 @@ use Illuminate\View\View;
 
 class EmailVerificationPromptController extends Controller
 {
-    
     public function __invoke(Request $request): RedirectResponse|View
     {
         return $request->user()->hasVerifiedEmail()

@@ -11,12 +11,10 @@ use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return true;
     }
-
 
     public function rules(): array
     {
@@ -25,7 +23,6 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
     }
-
 
     public function authenticate(): void
     {
@@ -41,7 +38,6 @@ class LoginRequest extends FormRequest
 
         RateLimiter::clear($this->throttleKey());
     }
-
 
     public function ensureIsNotRateLimited(): void
     {
@@ -60,7 +56,6 @@ class LoginRequest extends FormRequest
             ]),
         ]);
     }
-
 
     public function throttleKey(): string
     {

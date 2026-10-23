@@ -11,7 +11,6 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-
     public function create(): View
     {
         return view('auth.login');
@@ -25,14 +24,12 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
 
-        
         if ($user->role === 'admin') {
-            return redirect()->route('admin.dashboard'); 
+            return redirect()->route('admin.dashboard');
         }
 
-        return redirect()->route('events.index'); 
+        return redirect()->route('events.index');
     }
-
 
     public function destroy(Request $request): RedirectResponse
     {
@@ -42,6 +39,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/'); 
+        return redirect('/');
     }
 }

@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\MS_User;
 
 use App\Http\Controllers\Controller;
+use App\Models\MS_Event;
 use App\Models\MS_Registration;
 use Illuminate\Support\Facades\Auth;
-use App\Models\MS_Event;
-
 
 class MS_RegistrationController extends Controller
 {
-
     public function index()
     {
         $registrations = MS_Registration::query()
@@ -24,7 +22,6 @@ class MS_RegistrationController extends Controller
         return view('MS_User.registrations.index', compact('registrations'));
     }
 
-
     public function adminIndex()
     {
         $registrations = MS_Registration::query()
@@ -34,14 +31,13 @@ class MS_RegistrationController extends Controller
                 },
                 'user' => function ($q) {
                     $q->select('id', 'name', 'email');
-                }
+                },
             ])
             ->latest('created_at')
             ->paginate(15);
 
         return view('MS_Admin.registrations.index', compact('registrations'));
     }
-
 
     public function store(MS_Event $event)
     {
@@ -60,7 +56,6 @@ class MS_RegistrationController extends Controller
 
         return back()->with('success', 'Registration successful');
     }
-
 
     public function destroy(MS_Registration $registration)
     {

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\MS_Event;
 use App\Models\MS_Category;
+use App\Models\MS_Event;
 use Illuminate\Database\Seeder;
 
 class EventSeeder extends Seeder

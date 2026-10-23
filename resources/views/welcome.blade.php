@@ -58,7 +58,6 @@
                     <a href="{{ route('events.show', $event) }}" class="event-link">
                         <div class="event-card">
 
-                            {{-- ✅ IMAGE HANDLING (SOLUTION 1) --}}
                             @if($event->image && Storage::disk('public')->exists($event->image))
                                 <img src="{{ asset('storage/' . $event->image) }}"
                                      alt="{{ $event->title }}"

@@ -8,7 +8,6 @@ use Illuminate\Validation\Rules\Password;
 
 class ProfileUpdateRequest extends FormRequest
 {
-
     public function rules(): array
     {
         return [

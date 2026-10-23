@@ -12,7 +12,6 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -20,24 +19,21 @@ class ProfileController extends Controller
         ]);
     }
 
-
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = $request->user();
 
         $validated = $request->validated();
 
-        
         if ($request->filled('password')) {
             $validated['password'] = Hash::make($request->password);
         } else {
-           
+
             unset($validated['password']);
         }
 
         $user->fill($validated);
 
-        
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
@@ -47,7 +43,6 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')
             ->with('status', 'profile-updated');
     }
-
 
     public function destroy(Request $request): RedirectResponse
     {

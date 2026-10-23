@@ -10,7 +10,6 @@ use Illuminate\Validation\Rules\Password;
 
 class PasswordController extends Controller
 {
-   
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validateWithBag('updatePassword', [

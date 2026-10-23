@@ -10,7 +10,6 @@ use Illuminate\View\View;
 
 class PasswordResetLinkController extends Controller
 {
-   
     public function create(): View
     {
         return view('auth.forgot-password');
@@ -27,7 +26,6 @@ class PasswordResetLinkController extends Controller
             'email' => ['required', 'email'],
         ]);
 
-    
         $status = Password::sendResetLink(
             $request->only('email')
         );

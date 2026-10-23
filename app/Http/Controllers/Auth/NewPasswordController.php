@@ -15,7 +15,6 @@ use Illuminate\View\View;
 
 class NewPasswordController extends Controller
 {
-    
     public function create(Request $request): View
     {
         return view('auth.reset-password', ['request' => $request]);
@@ -34,7 +33,6 @@ class NewPasswordController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function (User $user) use ($request) {
@@ -46,7 +44,6 @@ class NewPasswordController extends Controller
                 event(new PasswordReset($user));
             }
         );
-
 
         return $status == Password::PASSWORD_RESET
                     ? redirect()->route('login')->with('status', __($status))

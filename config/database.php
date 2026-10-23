@@ -4,10 +4,7 @@ use Illuminate\Support\Str;
 
 return [
 
-
-
     'default' => env('DB_CONNECTION', 'sqlite'),
-
 
     'connections' => [
 
@@ -94,14 +91,10 @@ return [
 
     ],
 
-
-
     'migrations' => [
         'table' => 'migrations',
         'update_date_on_publish' => true,
     ],
-
-
 
     'redis' => [
 

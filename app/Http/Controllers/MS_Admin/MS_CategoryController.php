@@ -11,6 +11,7 @@ class MS_CategoryController extends Controller
     public function index()
     {
         $categories = MS_Category::latest()->paginate(10);
+
         return view('MS_Admin.categories.index', compact('categories'));
     }
 
@@ -39,7 +40,7 @@ class MS_CategoryController extends Controller
     public function update(Request $request, MS_Category $category)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
+            'name' => 'required|string|max:255|unique:categories,name,'.$category->id,
         ]);
 
         $category->update($validated);
@@ -48,17 +49,15 @@ class MS_CategoryController extends Controller
             ->with('success', 'Category updated successfully.');
     }
 
+    public function destroy(MS_Category $category)
+    {
+        if ($category->events()->exists()) {
+            return back()->with('warning', 'Sorry, you cannot delete this category because it is related to an existing event.');
+        }
 
+        $category->delete();
 
-public function destroy(MS_Category $category)
-{
-    if ($category->events()->exists()) {
-        return back()->with('warning', 'Sorry, you cannot delete this category because it is related to an existing event.');
+        return redirect()->route('admin.categories.index')
+            ->with('success', 'Category deleted successfully.');
     }
-
-    $category->delete();
-
-    return redirect()->route('admin.categories.index')
-                     ->with('success', 'Category deleted successfully.');
-}
 }

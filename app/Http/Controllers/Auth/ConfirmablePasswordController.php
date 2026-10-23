@@ -11,12 +11,10 @@ use Illuminate\View\View;
 
 class ConfirmablePasswordController extends Controller
 {
-
     public function show(): View
     {
         return view('auth.confirm-password');
     }
-
 
     public function store(Request $request): RedirectResponse
     {
