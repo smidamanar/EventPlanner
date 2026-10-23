@@ -5,7 +5,7 @@
 @section('content')
     <h1>All Registrations</h1>
 
-    <div class="events-table">
+    <div class="events-table registrations-table">
         <header>
             <h3>Total registrations: {{ $registrations->total() }}</h3>
         </header>
@@ -27,7 +27,7 @@
                         : '—' }}
                 </div>
                 <div>{{ $registration->user?->name ?? '—' }}</div>
-                <div>{{ $registration->user?->email ?? '—' }}</div>
+                <div class="registration-email">{{ $registration->user?->email ?? '—' }}</div>
                 <div>{{ $registration->created_at?->format('M j, Y H:i') ?? '—' }}</div>
             </div>
         @empty

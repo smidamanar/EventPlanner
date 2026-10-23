@@ -418,6 +418,7 @@ p {
         gap: 1rem;
         padding: 15px 20px;
     }
+
     nav {
         flex-wrap: wrap;
         justify-content: center;
@@ -1209,4 +1210,44 @@ footer {
         padding: 14px;
         font-size: 1.05rem;
     }
+}
+
+.registrations-table {
+    width: min(1400px, calc(100% - 32px));
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+.registrations-table .registrations-header,
+.registrations-table .registrations-row {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(0, 1.35fr)
+        minmax(0, 1.1fr)
+        minmax(0, 1.7fr)
+        minmax(0, 1.2fr);
+    column-gap: 20px;
+    min-width: 860px;
+    padding-right: 24px;
+    padding-left: 24px;
+}
+
+.registrations-table .registrations-header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.registrations-table .registrations-row {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.registrations-table .registrations-row > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.registrations-table .registration-email {
+    color: #333;
 }

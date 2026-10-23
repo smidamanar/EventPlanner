@@ -239,6 +239,18 @@ nav {
     padding: 10px;
 }
 
+.event-link,
+a.event-card {
+    color: inherit;
+    text-decoration: none;
+}
+
+.event-link:hover,
+a.event-card:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
 .event-image {
     width: calc(100% - 15px);
     margin: 0 auto;
